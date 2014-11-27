@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>SparkJS Library Example</title>
+    <script type="text/javascript" src="sparkio-client.js"></script>
+</head>
+
+<body>
+    <div id="buttons">
+        <button id="buttonGetStatus">Get Status</button>
+        <button id="buttonGetRSSI">Get WiFi Signal</button>
+        <button id="buttonLEDOn">LED ON</button>
+        <button id="buttonLEDOff">LED OFF</button>
+    </div>
+
+    <script type="application/javascript">
+        /*global SparkAPI*/
+        var accessToken = "Your access token"; //Access token for your core/app
+        var deviceID = "Your device id"; //Device ID for your device.
+
+        var SparkDevice = new SparkAPI(deviceID, accessToken);
+        var buttonGetStatus = document.getElementById("buttonGetStatus"); //Get the object that handles the Status button in the page
+        buttonGetStatus.onclick = function() { //Define what happens on the Status button click
+            SparkDevice.getVariable("", onSparkStatus); //Get a variable with "" as the name, actually pulls status.
+        }; //The onSparkStaus callback will be called with the result.
+
+
+        var buttonGetRSSI = document.getElementById("buttonGetRSSI"); //Get the object that handles the RSSI button in the page
+        buttonGetRSSI.onclick = function() { //Define what happens on the RSSI button click
+            SparkDevice.getVariable("RSSI", onSparkRSSI); //Use SparkJS function to get RSSI from the Spark Core. 
+        }; //The onSparkRSSI callback will be called with the result.
+
+        var buttonLEDOn = document.getElementById("buttonLEDOn"); //Get the object that handles the LED On button in the page
+        buttonLEDOn.onclick = function() { //Define what happens on the LED On button click
+            SparkDevice.callFunction("LED", "ON", onSparkLED); //Use the SparkJS function to call the Spark Core registered
+        }; //LED function with "ON" as the parameter string.
+        //The onSparkLED callback will be called with the result.
+
+
+        var buttonLEDOff = document.getElementById("buttonLEDOff"); //Get the object that handles the LED Off button in the page
+        buttonLEDOff.onclick = function() { //Define what happens on the LED Off button click
+            SparkDevice.callFunction("LED", "OFF", onSparkLED); //Use the SparkJS function to call the Spark Core registered 
+        }; //LED function with "OFF" as the parameter string.
+        //The onSparkLED callback will be called with the result.
+
+        function onSparkStatus(result) { //Callback function for the status button
+                console.log("Get Status Response:" + JSON.stringify(result)); //Just dump the result object to the console. Use the JS console
+            } //to view result. Could do a lot of stuff but keeping it simple now.
+
+        function onSparkRSSI(result) { //Callback function for the Get RSSI button
+                console.log("Get RSSI Response:" + JSON.stringify(result)); //Just dump the result object to the console. Use the JS console
+            } //to view result. Could do a lot of stuff but keeping it simple now.
+
+        function onSparkLED(result) { //Callback function for the LED (ON/OFF) button
+                console.log("Function LED Response:" + JSON.stringify(result)); //Just dump the result object to the console. Use the JS consol
+            } //to view result. Could do a lot of stuff but keeping it simple now.
+    </script>
+</body>
+
+</html>
