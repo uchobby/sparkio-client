@@ -38,10 +38,10 @@
         buttonConnect.onclick = function() { //Define what happens on the Status button click
             var inputDeviceID=document.getElementById("deviceID");
             var inputAccessToken=document.getElementById("accessToken");
-            inputAccessToken.value="38208a5f87aa4ab4756f10f6407d645877b53c51";
-            inputDeviceID.value="53ff70066667574856342467";
+
             accessToken=inputAccessToken.value;
             deviceID=inputDeviceID.value;
+            
             SparkDevice = new SparkAPI(deviceID, accessToken);
             SparkDevice.getVariable("", onSparkStatus); //Get a variable with "" as the name, actually pulls status.
         }; //The onSparkStaus callback will be called with the result.
