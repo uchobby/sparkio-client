@@ -10,22 +10,23 @@
     <table>
         <tr>
             <td><label for="deviceID">Your Device ID:</label></td>
-            <td><input type="text" id="deviceID" placeholder="Your Device ID"/></td>
+            <td><input type="text" id="deviceID" style="width:300px" placeholder="Your Device ID"/></td>
         </tr>
         <tr>
             <td><label for="deviceID">Your Access Token:</label></td>
-            <td><input type="text" id="accessToken" placeholder="Your Access Token" c/></td>
+            <td><input type="text" id="accessToken" style="width:300px" placeholder="Your Access Token" c/></td>
         </tr>
         </table>
     <div id="buttons">
-        <button id="buttonConnect">Connect</button>
-        <button id="buttonGetRSSI">Get WiFi Signal</button>
-        <button id="buttonLEDOn">LED ON</button>
-        <button id="buttonLEDOff">LED OFF</button>
+        <button id="buttonConnect" style="width:100px">Connect</button>
+        <button id="buttonGetRSSI" style="width:130px">Get WiFi Signal</button>
+        <button id="buttonLEDOn" style="width:100px">LED ON</button>
+        <button id="buttonLEDOff" style="width:100px">LED OFF</button>
     </div>
     <div>
+        <hr/>
         <h4>Result</h4>
-        <pre id="result"></pre>
+        <div id="result"></div>
     </div>
     <script type="application/javascript">
         /*global SparkAPI*/
